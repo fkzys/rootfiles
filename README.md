@@ -1,19 +1,19 @@
 # root_m — Arch Linux system configuration
 
-![License](https://img.shields.io/github/license/rpPH4kQocMjkm2Ve/root_m)
+![License](https://img.shields.io/github/license/fkzys/root_m)
 
 System-level configuration files (`/etc`, `/efi`, `/root`) managed with
-[dotm](https://gitlab.com/fkzys/dotm) using `dest = "/"`.
+[dotm](https://github.com/fkzys/dotm) using `dest = "/"`.
 
 ## What's included
 
-- **Atomic upgrades**: via [atomic-upgrade](https://gitlab.com/fkzys/atomic-upgrade) (per-host config override)
+- **Atomic upgrades**: via [atomic-upgrade](https://github.com/fkzys/atomic-upgrade) (per-host config override)
 - **Boot**: systemd-boot with signed UKI (Secure Boot via sbctl)
 - **Filesystem**: Btrfs on LUKS, automated snapshots via btrbk
 - **Network**: systemd-networkd (wired + wifi)
 - **Firewall**: firewalld with per-user network blocking and trusted zone templating
 - **Containers**: Podman with btrfs storage driver
-- **Hardening**: kernel sysctl, faillock, coredump off, USB lock, pam, [hardened\_malloc](https://gitlab.com/fkzys/hardened-malloc)
+- **Hardening**: kernel sysctl, faillock, coredump off, USB lock, pam, [hardened\_malloc](https://github.com/fkzys/hardened-malloc)
 - **Nextcloud blocking**: pacman hook prevents Nextcloud installation for user\_c (controlled by `block_nextcloud_user_c` prompt)
 
 ## Permissions
@@ -36,17 +36,17 @@ Pattern ending with `/` matches directories only; without — files only. `**` m
 
 ## hardened\_malloc
 
-Installed as a separate package via [gitpkg](https://gitlab.com/fkzys/gitpkg):
+Installed as a separate package via [gitpkg](https://github.com/fkzys/gitpkg):
 
 ```bash
 gitpkg install hardened_malloc
 ```
 
-See [hardened\_malloc](https://gitlab.com/fkzys/hardened_malloc) for details on variants, fake\_rlimit shim, and compatibility notes.
+See [hardened\_malloc](https://github.com/fkzys/hardened_malloc) for details on variants, fake\_rlimit shim, and compatibility notes.
 
 ## Atomic upgrade overrides
 
-The [atomic-upgrade](https://gitlab.com/fkzys/atomic-upgrade) package is installed separately. This repo provides:
+The [atomic-upgrade](https://github.com/fkzys/atomic-upgrade) package is installed separately. This repo provides:
 
 - **`/etc/atomic.conf`** — per-host kernel parameters (TPM2 auto-unlock, etc.) via dotm template
 
@@ -215,13 +215,13 @@ sudo systemctl enable --now btrbk.timer
 
 ### Required
 
-- [dotm](https://gitlab.com/fkzys/dotm) — dotfiles manager
+- [dotm](https://github.com/fkzys/dotm) — dotfiles manager
 - `sops` + `age` — secret encryption
 
 ### Optional
 
-- [hardened\_malloc](https://gitlab.com/fkzys/hardened_malloc) — hardened memory allocator (via [gitpkg](https://gitlab.com/fkzys/gitpkg))
-- [atomic-upgrade](https://gitlab.com/fkzys/atomic-upgrade) — atomic system upgrades (via [gitpkg](https://gitlab.com/fkzys/gitpkg) or [AUR](https://aur.archlinux.org/packages/atomic-upgrade))
+- [hardened\_malloc](https://github.com/fkzys/hardened_malloc) — hardened memory allocator (via [gitpkg](https://github.com/fkzys/gitpkg))
+- [atomic-upgrade](https://github.com/fkzys/atomic-upgrade) — atomic system upgrades (via [gitpkg](https://github.com/fkzys/gitpkg) or [AUR](https://aur.archlinux.org/packages/atomic-upgrade))
 - `btrbk` — automated Btrfs snapshots
 - `podman` — containers (btrfs storage driver)
 - `firewalld` — firewall with per-user blocking and trusted zones
