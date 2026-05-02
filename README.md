@@ -1,6 +1,6 @@
-# root_m — Arch Linux system configuration
+# rootfiles — Arch Linux system configuration
 
-![License](https://img.shields.io/github/license/fkzys/root_m)
+![License](https://img.shields.io/github/license/fkzys/rootfiles)
 
 System-level configuration files (`/etc`, `/efi`, `/root`) managed with
 [dotm](https://github.com/fkzys/dotm) using `dest = "/"`.
@@ -188,8 +188,8 @@ sops updatekeys secrets.enc.yaml
 
 3. Clone and apply:
 ```bash
-git clone <GIT_URL> /root/root_m
-cd /root/root_m
+git clone <GIT_URL> /root/rootfiles
+cd /root/rootfiles
 dotm init
 dotm apply
 ```
