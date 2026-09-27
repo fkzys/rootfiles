@@ -6,3 +6,4 @@ tpm2_unlock            = { type = "bool", question = "TPM2 LUKS auto-unlock" }
 laptop                 = { type = "bool", question = "Laptop (battery tmpfiles)" }
 block_nextcloud_user_c = { type = "bool", question = "Block nextcloud for user_c" }
 block_network_user_c   = { type = "bool", question = "Block network for user_c" }
+ntsync                 = { type = "bool", question = "Load nsync kernel module" }
