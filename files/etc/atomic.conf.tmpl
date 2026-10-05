@@ -8,7 +8,7 @@ NEW_ROOT="/run/atomic/newroot"
 ESP="/efi"
 KEEP_GENERATIONS=3
 MAPPER_NAME="root_crypt"
-KERNEL_PARAMS="{{ if .tpm2_unlock }}rd.luks.options=tpm2-device=auto {{ end }}rw slab_nomerge init_on_alloc=1 page_alloc.shuffle=1 pti=on vsyscall=none randomize_kstack_offset=on debugfs=off"
+KERNEL_PARAMS="{{ if .tpm2_unlock }}rd.luks.options=tpm2-device=auto systemd.tpm2_measured_os=0 {{ end }}rw slab_nomerge init_on_alloc=1 page_alloc.shuffle=1 pti=on vsyscall=none randomize_kstack_offset=on debugfs=off"
 
 # Default command to run in the snapshot chroot (overrides built-in default)
 # Command-line -- CHROOT_COMMAND... overrides this setting
