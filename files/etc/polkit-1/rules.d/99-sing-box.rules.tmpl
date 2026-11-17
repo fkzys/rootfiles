@@ -1,11 +1,8 @@
 {{ $s := output "sops" "-d" (joinPath .sourceDir "secrets.enc.yaml") | fromYaml -}}
 polkit.addRule(function(action, subject) {
-    if ((action.id == "org.freedesktop.resolve1.set-dns-servers" ||
-         action.id == "org.freedesktop.resolve1.set-domains" ||
-         action.id == "org.freedesktop.resolve1.set-default-route") ||
-         action.id == "org.freedesktop.resolve1.flush-caches" ||
-         action.id == "org.freedesktop.resolve1.revert" &&
-        subject.user == "{{ index $s "polkit" "username" }}") {
+    if (action.id == "org.freedesktop.systemd1.manage-units" &&
+        action.lookup("unit") == "sing-box.service" &&
+        subject.isInGroup("{{ index $s "polkit" "master_group" }}")) {
         return polkit.Result.YES;
     }
 });

@@ -1,0 +1,23 @@
+[Unit]
+Description=Sing-box service
+
+[Service]
+User=sing-box
+Group=sing-box
+LogNamespace=sing-box
+
+WorkingDirectory=/opt/sing-box
+ExecStart=/opt/sing-box/sing-box run -c /opt/sing-box/config.json
+
+ProtectHome=tmpfs
+ProtectSystem=strict
+ReadWritePaths=/opt/sing-box
+PrivateTmp=yes
+
+CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
+
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
